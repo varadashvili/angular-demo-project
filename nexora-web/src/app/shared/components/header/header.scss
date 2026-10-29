@@ -1,0 +1,119 @@
+@use "../../styles/variables" as *;
+@use "../../styles/placeholders" as *;
+@use "../../styles/mixins" as *;
+
+.header {
+  position: sticky;
+  padding-block: 20px;
+  top: 0;
+  z-index: 100;
+  background-color: $color-white;
+  border: 1px solid $color-border;
+
+  @media (max-width: $bp-md) {
+    padding-block: 18px;
+  }
+  @media (max-width: $bp-sm) {
+    padding-block: 16px;
+  }
+
+  &__content {
+    @extend %flex-sp-b;
+
+    &__items {
+      @extend %flex-sp-b;
+      gap: 10px;
+    }
+
+    &__logo {
+      @extend %flex-center;
+      background-color: $color-accent;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      color: $color-white;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    &__brand {
+      color: $color-dark;
+      font-size: 22px;
+      font-weight: 800;
+
+      @media (max-width: $bp-md) {
+        font-size: 21px;
+      }
+      @media (max-width: $bp-sm) {
+        font-size: 19px;
+      }
+    }
+
+    .nav {
+
+      &__items {
+        display: -webkit-box;
+        display: flex;
+        gap: 32px;
+
+        @media (max-width: $bp-md) {
+          display: none;
+        }
+      }
+
+      &__link {
+        position: relative;
+        color: $color-body;
+        font-size: 15px;
+        font-weight: 500;
+        -webkit-transition: color $transition;
+        transition: color $transition;
+      }
+
+      &__link.is-active {
+        color: $color-accent;
+        font-weight: 600;
+      }
+
+      &__link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0;
+        height: 2px;
+        background: $color-accent;
+        -webkit-transition: width $transition;
+        transition: width $transition;
+      }
+
+      &__link:hover {
+        color: $color-accent;
+      }
+
+      &__link:hover::after,
+      &__link.is-active::after {
+        width: 100%;
+      }
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 24px;
+      color: $color-dark;
+      cursor: pointer;
+
+      @media (max-width: $bp-md) {
+        display: block;
+      }
+    }
+
+    .btn.btn--primary {
+      @media (max-width: $bp-md) {
+        display: none;
+      }
+    }
+  }
+}

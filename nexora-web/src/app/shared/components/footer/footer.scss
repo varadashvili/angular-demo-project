@@ -1,0 +1,150 @@
+@use "../../styles/variables" as *;
+@use "../../styles/placeholders" as *;
+@use "../../styles/mixins" as *;
+
+.footer {
+  background-color: $color-ink;
+  padding: 64px 0 32px 0;
+
+  @media (max-width: $bp-md) {
+    padding: 48px 0 28px 0;
+  }
+  @media (max-width: $bp-sm) {
+    padding: 32px 0 28px 0;
+  }
+
+  .social {
+    background: #1E293B;
+
+    i {
+      color: $color-white;
+    }
+  }
+
+  .social:hover {
+    background: $color-accent;
+  }
+
+  &__content {
+    @extend %flex-sp-b;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  &__brand {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 300px;
+
+    @media (max-width: $bp-md) {
+      max-width: 100%;
+      width: 100%;
+    }
+
+
+    &__link {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      gap: 10px;
+    }
+
+    &__logo {
+      @extend %flex-center;
+      background-color: $color-accent;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      color: $color-white;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    &__logo-name {
+      color: $color-white;
+      font-size: 22px;
+      font-weight: 800;
+
+      @media (max-width: $bp-md) {
+        font-size: 21px;
+      }
+      @media (max-width: $bp-sm) {
+        font-size: 18px;
+      }
+    }
+
+    p {
+      color: $color-muted;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 24px;
+
+      @media (max-width: $bp-md) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__nav {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    gap: 14px;
+
+
+    @media (max-width: $bp-sm) {
+      display: none;
+    }
+
+    .h4 {
+      color: $color-white;
+      font-size: 15px;
+      font-weight: 700;
+
+      @media (max-width: $bp-md) {
+        font-size: 14px;
+      }
+    }
+
+    a {
+      color: $color-muted;
+      font-size: 14px;
+      font-weight: 400;
+      -webkit-transition: color $transition;
+      transition: color $transition;
+
+      @media (max-width: $bp-md) {
+        font-size: 13px;
+      }
+    }
+
+    a:hover {
+      color: $color-white;
+    }
+  }
+
+  &__line {
+    height: 1px;
+    margin: 40px 0;
+    background-color: #1E293B;
+  }
+
+  &__copyright {
+    p {
+      color: #64748B;
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
+}
