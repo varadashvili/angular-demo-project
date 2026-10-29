@@ -1,6 +1,10 @@
 <app-header/>
-<!--<router-outlet />-->
 
-<app-main/>
+<router-outlet />
 
 <app-footer/>
+
+
+@if(spinnerService.$spinnerStatusPublisher | async) {
+  <app-spinner/>
+}
