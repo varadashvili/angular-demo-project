@@ -12,11 +12,23 @@ export const routes: Routes = [
     component: Main,
   },
   {
-    path: 'login',
-    loadComponent: () => import('./features/auth/login/login').then((m) => m.Login),
-  },
-  {
     path: 'register',
     loadComponent: () => import('./features/auth/register/register').then((m) => m.Register),
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./features/contact/contact').then((m) => m.Contact),
+  },
+  {
+    path: 'news',
+    loadComponent: () => import('./features/news/news-landing/news-landing').then((m) => m.NewsLanding),
+  },
+  {
+    path: 'about',
+    loadComponent: () => import('./features/about/about').then((m) => m.About),
+  },
+  {
+    path: 'services',
+    loadComponent: () => import('./features/services/services-landing/services-landing').then((m) => m.ServicesLanding),
   }
 ];

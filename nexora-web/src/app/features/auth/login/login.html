@@ -1,1 +1,59 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="overlay">
+  </div>
+  <div class="contents">
+    <i class="fa-solid fa-xmark close" (click)="authServ.$showLoginPublisher.next(false)"></i>
+    <h2 class="title">Login</h2>
+    <form [formGroup]="userForm" class="form">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="text" class="form-control" id="email" formControlName="email"/>
+
+        @if (emailControl.touched) {
+          @if (emailControl.hasError('required')) {
+            <app-error-message [errorMsg]="'Email is required'"/>
+          }
+          @if (emailControl.hasError('email')) {
+            <app-error-message [errorMsg]="'Wrong Format'"/>
+          }
+          @if (emailControl.hasError('minlength')) {
+            <app-error-message [errorMsg]="'Minlength is 10 symbol'"/>
+          }
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password: </label>
+        <input type="password" class="form-control" id="password" formControlName="password"/>
+
+        @if (passwordControl.touched) {
+          @if (passwordControl.hasError('required')) {
+            <app-error-message [errorMsg]="'Password is required'"/>
+          }
+          @if (passwordControl.hasError('pattern')) {
+            <app-error-message [errorMsg]="'Password must be min 8 symbol, min 1 big letter ...'"/>
+          }
+        }
+      </div>
+
+    </form>
+
+    <div class="btns">
+      <button
+        (click)="login()"
+        [disabled]="userForm.invalid"
+        type="submit"
+        class="btn-solid theme-primary">
+        Login
+      </button>
+
+      <button
+        (click)="navigateToRegister($event)"
+        type="button"
+        class="btn-solid theme-secondary">
+        Register
+      </button>
+
+    </div>
+  </div>
+</div>

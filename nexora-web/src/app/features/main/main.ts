@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {PublisherService} from '../../shared/services/publisher-service';
 
 @Component({
   selector: 'app-main',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './main.html',
   styleUrl: './main.scss',
 })
-export class Main {}
+export class Main {
+  public publisherService = inject(PublisherService);
+
+  constructor() {
+    this.publisherService.$activePagePublisher.next('main');
+  }
+}

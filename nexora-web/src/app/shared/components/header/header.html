@@ -1,7 +1,7 @@
 <header class="header">
   <div class="container">
     <div class="header__content">
-      <a class="header__content__items" href="../index.html">
+      <a class="header__content__items" [routerLink]="['/']">
         <span class="header__content__logo">N</span>
         <div class="header__content__brand">
           <span>Nexora</span>
@@ -10,15 +10,35 @@
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__items">
-            <a class="nav__link" href="../index.html">Home</a>
-            <a class="nav__link is-active" href="./About.html">About</a>
-            <a class="nav__link" href="./Services.html">Services</a>
-            <a class="nav__link" href="./News.html">News</a>
-            <a class="nav__link" href="./Contact.html">Contact</a>
+            @if(activePage() === 'main') {
+              <a class="nav__link is-active" [routerLink]="['/']">Home</a>
+            } @else {
+              <a class="nav__link" [routerLink]="['/']">Home</a>
+            }
+            @if (activePage() === 'about') {
+              <a class="nav__link is-active" [routerLink]="['/about']">About</a>
+            } @else {
+              <a class="nav__link" [routerLink]="['/about']">About</a>
+            }
+            @if (activePage() === 'services') {
+              <a class="nav__link is-active" [routerLink]="['/services']">Services</a>
+            } @else {
+              <a class="nav__link" [routerLink]="['/services']">Services</a>
+            }
+            @if (activePage() === 'news') {
+              <a class="nav__link is-active" [routerLink]="['/news']">News</a>
+            } @else {
+              <a class="nav__link" [routerLink]="['/news']">News</a>
+            }
+            @if (activePage() === 'contact') {
+              <a class="nav__link is-active" [routerLink]="['/contact']">Contact</a>
+            } @else {
+              <a class="nav__link" [routerLink]="['/contact']">Contact</a>
+            }
           </li>
         </ul>
       </nav>
-      <a class="btn btn--primary" href="#">Get Started</a>
+      <a class="btn btn--primary" (click)="AuthService.$showLoginPublisher.next(true)">Get Started</a>
       <button class="nav-toggle">
         <i class="fa-solid fa-bars"></i>
       </button>

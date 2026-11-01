@@ -8,3 +8,7 @@
 @if(spinnerService.$spinnerStatusPublisher | async) {
   <app-spinner/>
 }
+
+@if(AuthService.$showLoginPublisher | async) {
+  <app-login/>
+}

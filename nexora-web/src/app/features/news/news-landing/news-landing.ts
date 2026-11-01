@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {PublisherService} from '../../../shared/services/publisher-service';
 
 @Component({
   selector: 'app-news-landing',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './news-landing.html',
   styleUrl: './news-landing.scss',
 })
-export class NewsLanding {}
+export class NewsLanding {
+  public publisherService = inject(PublisherService);
+
+  constructor() {
+    this.publisherService.$activePagePublisher.next('news');
+  }
+}

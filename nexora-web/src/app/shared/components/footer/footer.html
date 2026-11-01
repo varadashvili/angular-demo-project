@@ -2,7 +2,7 @@
   <div class="container">
     <div class="footer__content">
       <div class="footer__brand">
-        <a class="footer__brand__link" href="../index.html">
+        <a class="footer__brand__link" [routerLink]="['/']">
           <div class="footer__brand__logo">
             <span>N</span>
           </div>
@@ -31,26 +31,26 @@
 
       <div class="footer__nav">
         <div class="h4">Company</div>
-        <a class="footer__link" href="./About.html">About</a>
-        <a class="footer__link" href="">Careers</a>
-        <a class="footer__link" href="./News.html">News</a>
-        <a class="footer__link" href="./Contact.html">Contact</a>
+        <a class="footer__link" [routerLink]="['/about']">About</a>
+        <a class="footer__link" [routerLink]="['/careers']">Careers</a>
+        <a class="footer__link" [routerLink]="['/news']">News</a>
+        <a class="footer__link" [routerLink]="['/contact']">Contact</a>
       </div>
 
       <div class="footer__nav">
         <div class="h4">Services</div>
-        <a class="footer__link" href="">Web Development</a>
-        <a class="footer__link" href="">UI/UX Design</a>
-        <a class="footer__link" href="">Cloud & DevOps</a>
-        <a class="footer__link" href="">Consulting</a>
+        <a class="footer__link" [routerLink]="['/web-development']">Web Development</a>
+        <a class="footer__link" [routerLink]="['/ui-ux-design']">UI/UX Design</a>
+        <a class="footer__link" [routerLink]="['/cloud-devops']">Cloud & DevOps</a>
+        <a class="footer__link" [routerLink]="['/consulting']">Consulting</a>
       </div>
 
       <div class="footer__nav">
         <div class="h4">Resources</div>
-        <a class="footer__link" href="">Blog</a>
-        <a class="footer__link" href="">Case Studies</a>
-        <a class="footer__link" href="">Support</a>
-        <a class="footer__link" href="">Privacy</a>
+        <a class="footer__link" [routerLink]="['/blog']">Blog</a>
+        <a class="footer__link" [routerLink]="['/case-studies']">Case Studies</a>
+        <a class="footer__link" [routerLink]="['/support']">Support</a>
+        <a class="footer__link" [routerLink]="['/privacy']">Privacy</a>
       </div>
     </div>
 
