@@ -1,3 +1,19 @@
-﻿{
-
+{
+  users: [
+    {
+      id: '2WZOzyJLBMQ',
+      username: 'giorgi',
+      email: 'varadashvili@gmail.com',
+      mobile: '597177157',
+      password: 'StrongPass1!'
+    },
+    {
+      username: 'givargi',
+      email: 'varadashvili1@gmail.com',
+      mobile: '599999999',
+      password: 'StrongPass1!',
+      id: 'Nh99zbalFqg'
+    }
+  ],
+  $schema: './node_modules/json-server/schema.json'
 }

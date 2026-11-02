@@ -7,7 +7,8 @@ import {Component} from '@angular/core';
     .spinner-container {
       width: 100%;
       height: 100vh;
-      position: absolute;
+      position: fixed;
+      z-index: 1000000;
       top: 0;
       left: 0;
 
@@ -25,7 +26,7 @@ import {Component} from '@angular/core';
         top: 50%;
         left: 50%;
         border-inline-end-color: #0000;
-        background: lightblue;
+        background: darkblue;
       }
     }
   `,

@@ -4,14 +4,12 @@ import {AuthService} from '../services/auth-service';
 import {matchValidator} from './validator';
 import {IUserInfo} from '../interfaces/IUserInfo';
 import {ErrorMessage} from '../../../shared/components/error-message/error-message';
-import {RouterLink} from '@angular/router';
 import {PublisherService} from '../../../shared/services/publisher-service';
 
 @Component({
   imports: [
     ReactiveFormsModule,
     ErrorMessage,
-    RouterLink
   ],
   selector: 'app-register',
   styleUrl: './register.scss',

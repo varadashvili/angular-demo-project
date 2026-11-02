@@ -10,7 +10,7 @@
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__items">
-            @if(activePage() === 'main') {
+            @if (activePage() === 'main') {
               <a class="nav__link is-active" [routerLink]="['/']">Home</a>
             } @else {
               <a class="nav__link" [routerLink]="['/']">Home</a>
@@ -38,10 +38,11 @@
           </li>
         </ul>
       </nav>
-      <a class="btn btn--primary" (click)="AuthService.$showLoginPublisher.next(true)">Get Started</a>
-      <button class="nav-toggle">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+      @if (AuthService.isAuthenticated()) {
+        <a class="btn btn--primary" (click)="AuthService.logout()">Logout {{ AuthService.userInfo()?.username }}</a>
+      } @else {
+        <a class="btn btn--primary" (click)="AuthService.$showLoginPublisher.next(true)">Get Started</a>
+      }
     </div>
   </div>
 </header>

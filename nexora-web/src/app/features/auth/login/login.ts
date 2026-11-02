@@ -30,12 +30,19 @@ export class Login {
       email: this.emailControl.value,
       password: this.passwordControl.value,
     };
-    this.authServ.login(user);
+
+    this.authServ.login(user).subscribe((success) => {
+      if (success) {
+        this.router.navigate(['/main']);
+      }
+    });
+
   }
 
   public get emailControl(): FormControl {
     return this.userForm.get('email') as FormControl;
   }
+
   public get passwordControl(): FormControl {
     return this.userForm.get('password') as FormControl;
   }

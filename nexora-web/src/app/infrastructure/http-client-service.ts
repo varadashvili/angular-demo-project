@@ -11,25 +11,19 @@ export const baseUrl = 'http://localhost:3000';
 export class HttpClientService {
   private http = inject(HttpClient);
   private errorServ = inject(ErrorService);
-  private spinnerServ = inject(SpinnerService);
-  private users = signal<IUserInfo[]>([]);
 
   public getUsers(): Observable<IUserInfo[]> {
-    this.spinnerServ.$spinnerStatusPublisher.next(true);
-
     return this.http.get<IUserInfo[]>(`${baseUrl}/users`).pipe(
       delay(2000),
-      tap(
-        (users: IUserInfo[]) => {
-          this.users.set(users);
-          this.spinnerServ.$spinnerStatusPublisher.next(false);
-        },
-        () => {
+      tap({
+        next:
+          (users: IUserInfo[]) => {
+          },
+        error: () => {
           this.errorServ.setErrMsg('Http Request Error');
           this.errorServ.clearMsg();
-          this.spinnerServ.$spinnerStatusPublisher.next(false);
         },
-      ),
+      }),
     );
   }
 
@@ -38,7 +32,6 @@ export class HttpClientService {
   }
 
   public register(userInfo: IUserInfo): Observable<IUserInfo[] | IUserInfo> {
-    this.spinnerServ.$spinnerStatusPublisher.next(true);
 
     return this.getUsers().pipe(
       delay(2000),
@@ -47,11 +40,12 @@ export class HttpClientService {
           (user) => user.email === userInfo.email || user.mobile === userInfo.mobile,
         );
 
-        if (!findedUser) return this.registerUser(userInfo);
+        if (!findedUser) {
+          return this.registerUser(userInfo);
+        }
 
         this.errorServ.setErrMsg('this email or mobile is already registered');
         this.errorServ.clearMsg();
-        this.spinnerServ.$spinnerStatusPublisher.next(false);
 
         return of([] as IUserInfo[]);
       }),
@@ -61,17 +55,15 @@ export class HttpClientService {
   public registerUser(userInfo: IUserInfo): Observable<IUserInfo> {
     return this.http.post<IUserInfo>(`${baseUrl}/users`, userInfo).pipe(
       delay(2000),
-      tap(
-        () => {
-          this.spinnerServ.$spinnerStatusPublisher.next(false);
-        },
-        () => {
+      tap({
+        next:
+          (user: IUserInfo) => {
+          },
+        error: () => {
           this.errorServ.setErrMsg('Http Request Error');
-
           this.errorServ.clearMsg();
-          this.spinnerServ.$spinnerStatusPublisher.next(false);
         },
-      ),
+      }),
     );
   }
 }

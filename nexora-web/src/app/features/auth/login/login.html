@@ -1,5 +1,5 @@
 <div class="login-container">
-  <div class="overlay">
+  <div class="overlay" (click)="authServ.$showLoginPublisher.next(false)">
   </div>
   <div class="contents">
     <i class="fa-solid fa-xmark close" (click)="authServ.$showLoginPublisher.next(false)"></i>
