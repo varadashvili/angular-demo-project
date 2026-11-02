@@ -31,7 +31,7 @@ export class HttpClientService {
     return this.getUsers();
   }
 
-  public register(userInfo: IUserInfo): Observable<IUserInfo[] | IUserInfo> {
+  public register(userInfo: IUserInfo): Observable<IUserInfo[] | IUserInfo | null> {
 
     return this.getUsers().pipe(
       delay(2000),
@@ -47,7 +47,7 @@ export class HttpClientService {
         this.errorServ.setErrMsg('this email or mobile is already registered');
         this.errorServ.clearMsg();
 
-        return of([] as IUserInfo[]);
+        return of(null);
       }),
     );
   }

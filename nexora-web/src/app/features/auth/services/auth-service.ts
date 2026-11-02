@@ -67,9 +67,12 @@ export class AuthService {
   public register(userInfo: IUserInfo) {
     this.spinnerServ.$spinnerStatusPublisher.next(true);
     this.apiService.register(userInfo).subscribe({
-      next: () => {
+      next: (userInfo) => {
         //this.spinnerServ.$spinnerStatusPublisher.next(false);
-        this.$showLoginPublisher.next(true);
+
+        if(!!userInfo) {
+          this.$showLoginPublisher.next(true);
+        }
       },
       error: () => {
         //this.spinnerServ.$spinnerStatusPublisher.next(false);

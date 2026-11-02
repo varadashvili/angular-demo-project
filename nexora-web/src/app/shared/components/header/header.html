@@ -1,4 +1,10 @@
 <header class="header">
+  @if (errorServ.showErrorMsg()) {
+    <div class="header__error" role="alert" animate.enter="header__error--enter" animate.leave="header__error--leave">
+      <app-error-message [errorMsg]="errorServ.msg()" />
+    </div>
+  }
+
   <div class="container">
     <div class="header__content">
       <a class="header__content__items" [routerLink]="['/']">

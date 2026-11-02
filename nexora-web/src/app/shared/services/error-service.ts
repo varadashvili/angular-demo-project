@@ -5,8 +5,11 @@ export class ErrorService {
   public showErrorMsg = signal(false);
   public msg = signal('');
 
+  private clearTimer?: ReturnType<typeof setTimeout>;
+
   public clearMsg() {
-    setTimeout(() => {
+    clearTimeout(this.clearTimer);
+    this.clearTimer = setTimeout(() => {
       this.showErrorMsg.set(false);
       this.msg.set('');
     }, 3000);

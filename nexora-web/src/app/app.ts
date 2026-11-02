@@ -7,12 +7,10 @@ import {SpinnerService} from './shared/components/spinner/spinner-service';
 import {AsyncPipe} from '@angular/common';
 import {AuthService} from './features/auth/services/auth-service';
 import {Login} from './features/auth/login/login';
-import {ErrorService} from './shared/services/error-service';
-import {ErrorMessage} from './shared/components/error-message/error-message';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Footer, Spinner, AsyncPipe, Login, ErrorMessage],
+  imports: [RouterOutlet, Header, Footer, Spinner, AsyncPipe, Login],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -21,5 +19,4 @@ export class App {
 
   public spinnerService = inject(SpinnerService);
   protected readonly AuthService = inject(AuthService);
-  public errorServ = inject(ErrorService);
 }
