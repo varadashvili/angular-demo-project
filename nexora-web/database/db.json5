@@ -15,5 +15,31 @@
       id: 'Nh99zbalFqg'
     }
   ],
+  partners: [
+    {
+      id: '1',
+      name: 'Vertex'
+    },
+    {
+      id: '2',
+      name: 'Lumen'
+    },
+    {
+      id: '3',
+      name: 'Northwind'
+    },
+    {
+      id: '4',
+      name: 'Cobalt'
+    },
+    {
+      id: '5',
+      name: 'Atlas'
+    },
+    {
+      id: '6',
+      name: 'Pulse'
+    }
+  ],
   $schema: './node_modules/json-server/schema.json'
 }

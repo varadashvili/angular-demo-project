@@ -3,7 +3,7 @@ import {HttpClientService} from '../../../infrastructure/http-client-service';
 import {ErrorService} from '../../../shared/services/error-service';
 import {IUserInfo} from '../interfaces/IUserInfo';
 import {IUser} from '../interfaces/IUser';
-import {BehaviorSubject, catchError, finalize, map, Observable, of} from 'rxjs';
+import {BehaviorSubject, catchError, delay, finalize, map, Observable, of, switchMap, tap} from 'rxjs';
 import {SpinnerService} from '../../../shared/components/spinner/spinner-service';
 
 @Service()
@@ -45,15 +45,17 @@ export class AuthService {
         );
 
         if (!findedUser) {
-          this.errorServ.setErrMsg('Wrong email or password');
-          this.errorServ.clearMsg();
+          this.errorServ.displayErrorMessage('Wrong email or password');
           return false;
         }
 
         this.setUserInfo(findedUser);
         return true;
       }),
-      catchError(() => of(false)),
+      catchError(($msg) => {
+        console.log($msg);
+        return of(false);
+      }),
       finalize(() => this.spinnerServ.$spinnerStatusPublisher.next(false)),
     );
   }
@@ -64,22 +66,34 @@ export class AuthService {
     this.isAuthenticated.set(false);
   }
 
+
   public register(userInfo: IUserInfo) {
     this.spinnerServ.$spinnerStatusPublisher.next(true);
-    this.apiService.register(userInfo).subscribe({
-      next: (userInfo) => {
-        //this.spinnerServ.$spinnerStatusPublisher.next(false);
 
-        if(!!userInfo) {
-          this.$showLoginPublisher.next(true);
+    this.apiService.getUsers().pipe(
+      tap((usersInfo) => {
+        const findedUser = usersInfo.find(
+          (user) => user.email === userInfo.email || user.mobile === userInfo.mobile,
+        );
+
+        if (!findedUser) {
+          this.apiService.registerUser(userInfo).subscribe({
+            next: (userInfo) => {
+              this.$showLoginPublisher.next(true);
+            },
+            error: ($msg) => {
+              this.errorServ.displayErrorMessage($msg);
+            }
+          });
+        } else {
+          this.errorServ.displayErrorMessage('this email or mobile is already registered');
         }
-      },
-      error: () => {
-        //this.spinnerServ.$spinnerStatusPublisher.next(false);
-      },
-      complete: () => {
-        this.spinnerServ.$spinnerStatusPublisher.next(false);
-      }
-    });
+      }),
+      catchError(($msg) => {
+        console.log($msg);
+        return of(null);
+      }),
+      finalize(() => this.spinnerServ.$spinnerStatusPublisher.next(false)),
+    ).subscribe();
   }
 }

@@ -19,4 +19,9 @@ export class ErrorService {
     this.showErrorMsg.set(true);
     this.msg.set(msg);
   }
+
+  public displayErrorMessage(msg: string) {
+    this.setErrMsg(msg);
+    this.clearMsg();
+  }
 }
