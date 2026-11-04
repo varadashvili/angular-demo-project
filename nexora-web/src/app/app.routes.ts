@@ -22,6 +22,16 @@ export const routes: Routes = [
   {
     path: 'news',
     loadComponent: () => import('./features/news/news-landing/news-landing').then((m) => m.NewsLanding),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./features/news/components/news-items/news-items').then((m) => m.NewsItems),
+      },
+      {
+        path: 'cat/:categoryId',
+        loadComponent: () => import('./features/news/components/news-items/news-items').then((m) => m.NewsItems),
+      }
+    ]
   },
   {
     path: 'about',

@@ -41,5 +41,168 @@
       name: 'Pulse'
     }
   ],
+  missions: [
+    {
+      id: '1',
+      name: 'Craft',
+      description: 'We care about quality and polish in everything we ship, down to the last pixel.',
+      iconClass: 'fa-solid fa-gem',
+    },
+    {
+      id: '2',
+      name: 'People first',
+      description: 'Honest communication and long-term relationships with clients and teammates.',
+      iconClass: 'fa-solid fa-heart',
+    },
+    {
+      id: '3',
+      name: 'Momentum',
+      description: 'We move fast, learn quickly and keep improving with every release.',
+      iconClass: 'fa-solid fa-bolt',
+    },
+    {
+      id: '4',
+      name: 'Integrity',
+      description: 'We do what we say, and we say what we mean — even when it is hard.',
+      iconClass: 'fa-solid fa-shield-halved',
+    }
+  ],
+  founders: [
+    {
+      id: '1',
+      name: 'Polikarpe Ghobeglejiashvili',
+      initials: 'PG',
+      title: 'Co-founder & CEO',
+      description: 'Leads strategy and partnerships. Former product lead with 12 years in tech.',
+      linkedinUrl: 'https://www.linkedin.com/in/polikarpe-ghobeglejiashvili-1a0b3a1a/',
+      twitterUrl: 'https://twitter.com/polikarpe',
+    },
+    {
+      id: '2',
+      name: 'Kalistrate Samchkuashvili',
+      initials: 'KS',
+      title: 'Co-founder & CTO',
+      description: 'Heads engineering and architecture. Loves clean code and fast systems.',
+      linkedinUrl: '',
+      twitterUrl: '',
+    },
+    {
+      id: '3',
+      name: 'Agrafina Samadalashvili',
+      initials: 'AS',
+      title: 'Head of Design',
+      description: 'Shapes the look and feel of every product with a sharp eye for detail.',
+      linkedinUrl: 'https://www.linkedin.com/in/agrafina-samadalashvili-1a0b3a1a/',
+      twitterUrl: 'https://twitter.com/agrafina_samadalashvili',
+    }
+  ],
+  newsCategories: [
+    {
+      id: '1',
+      name: 'Product'
+    },
+    {
+      id: '2',
+      name: 'Company'
+    },
+    {
+      id: '3',
+      name: 'Engineering'
+    },
+    {
+      id: '4',
+      name: 'Design'
+    }
+  ],
+  news: [
+    {
+      id: '1',
+      title: 'We launched Nexora Analytics 2.0',
+      content: 'Our biggest release yet brings a redesigned dashboard, real-time data streaming and a new insights engine that surfaces trends automatically for your whole team.',
+      categoryId: '1',
+      categoryName: 'Product',
+      author: 'Nino Mchedlidze',
+      authorInitials: 'NM',
+      timeToRead: '5 min',
+      date: 'July 10, 2026'
+    },
+    {
+      id: '2',
+      title: 'Introducing dark mode everywhere',
+      content: 'Dark mode is now available across all Nexora products, fully accessible.',
+      categoryId: '1',
+      categoryName: 'Product',
+      author: 'Nino Mchedlidze',
+      authorInitials: 'NM',
+      timeToRead: '5 min',
+      date: 'June 26, 2026'
+    },
+    {
+      id: '3',
+      title: 'Opening our new Tbilisi office',
+      content: 'We are expanding to the Caucasus with a brand-new engineering hub and 15 open roles.',
+      categoryId: '2',
+      categoryName: 'Company',
+      author: 'Jumber Gogoladze',
+      authorInitials: 'JG',
+      timeToRead: '6 min',
+      date: 'June 20, 2026'
+    },
+    {
+      id: '4',
+      title: 'Nexora joins the GreenTech pledge',
+      content: 'We are committing to carbon-neutral hosting for all client projects by 2027.',
+      categoryId: '2',
+      categoryName: 'Company',
+      author: 'Jumber Gogoladze',
+      authorInitials: 'JG',
+      timeToRead: '4 min',
+      date: 'June 18, 2026'
+    },
+    {
+      id: '5',
+      title: 'How we cut build times by 60%',
+      content: 'A deep dive into the tooling and pipeline changes behind our latest release.',
+      categoryId: '3',
+      categoryName: 'Engineering',
+      author: 'Polikarpe Jamchurchelashvili',
+      authorInitials: 'PJ',
+      timeToRead: '7 min',
+      date: 'June 16, 2026'
+    },
+    {
+      id: '6',
+      title: 'Scaling to 1M requests per minute',
+      content: 'The architecture decisions that keep our platform fast under heavy load.',
+      categoryId: '3',
+      categoryName: 'Engineering',
+      author: 'Polikarpe Jamchurchelashvili',
+      authorInitials: 'PJ',
+      timeToRead: '6 min',
+      date: 'June 14, 2026'
+    },
+    {
+      id: '7',
+      title: 'Refreshing our design system',
+      content: 'Why we rebuilt our component library from the ground up and what we learned.',
+      categoryId: '4',
+      categoryName: 'Design',
+      author: 'Zuka Lamaziani',
+      authorInitials: 'ZL',
+      timeToRead: '6 min',
+      date: 'June 12, 2026'
+    },
+    {
+      id: '8',
+      title: 'New color palette and typography',
+      content: 'We are updating our visual identity to be more accessible and inclusive.',
+      categoryId: '4',
+      categoryName: 'Design',
+      author: 'Zuka Lamaziani',
+      authorInitials: 'ZL',
+      timeToRead: '9 min',
+      date: 'June 10, 2026'
+    }
+  ],
   $schema: './node_modules/json-server/schema.json'
 }

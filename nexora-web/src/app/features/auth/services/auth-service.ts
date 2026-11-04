@@ -1,14 +1,14 @@
 import {inject, Service, signal} from '@angular/core';
-import {HttpClientService} from '../../../infrastructure/http-client-service';
 import {ErrorService} from '../../../shared/services/error-service';
 import {IUserInfo} from '../interfaces/IUserInfo';
 import {IUser} from '../interfaces/IUser';
-import {BehaviorSubject, catchError, delay, finalize, map, Observable, of, switchMap, tap} from 'rxjs';
+import {BehaviorSubject, catchError, finalize, map, Observable, of, tap} from 'rxjs';
 import {SpinnerService} from '../../../shared/components/spinner/spinner-service';
+import {AuthApiService} from '../../../infrastructure/AuthApiService';
 
 @Service()
 export class AuthService {
-  private apiService = inject(HttpClientService);
+  private apiService = inject(AuthApiService);
   private errorServ = inject(ErrorService);
   private spinnerServ = inject(SpinnerService);
 
@@ -72,11 +72,11 @@ export class AuthService {
 
     this.apiService.getUsers().pipe(
       tap((usersInfo) => {
-        const findedUser = usersInfo.find(
+        const foundUser = usersInfo.find(
           (user) => user.email === userInfo.email || user.mobile === userInfo.mobile,
         );
 
-        if (!findedUser) {
+        if (!foundUser) {
           this.apiService.registerUser(userInfo).subscribe({
             next: (userInfo) => {
               this.$showLoginPublisher.next(true);

@@ -1,0 +1,51 @@
+<section class="sec-main-news">
+  <div class="container">
+    <div class="m-news">
+      <div class="m-news__image"></div>
+      <div class="m-news__content">
+        <div class="m-news__head">
+          <span class="tag">{{ newsService.topNewsInfo()?.categoryName }}</span>
+          <span class="date">Featured · {{ newsService.topNewsInfo()?.date }}</span>
+        </div>
+        <div class="m-news__title">{{ newsService.topNewsInfo()?.title }}</div>
+        <div class="m-news__text">{{ newsService.topNewsInfo()?.content }}</div>
+        <div class="m-news__author">
+          <span class="initials">{{ newsService.topNewsInfo()?.authorInitials }}</span>
+          <div class="author">
+            <span class="author__name">{{ newsService.topNewsInfo()?.author }}</span>
+            <br>
+            <span class="author__time">{{ newsService.topNewsInfo()?.timeToRead }} read</span>
+          </div>
+        </div>
+        <a href="#" class="link">Read article →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-news">
+  <div class="container">
+    <div class="news">
+      <div class="news-cards">
+        @for (news of newsService.newsInfos(); track $index) {
+          <div class="news-cards__item">
+            <div class="news-cards__image"></div>
+            <div class="news-cards__content">
+              <div class="news-cards__head">
+                <span class="tag">{{ news.categoryName }}</span>
+                <span class="date">{{ news.date }}</span>
+              </div>
+              <h3 class="news-cards__title">{{ news.title }}</h3>
+              <div class="news-cards__text">{{ news.content }}</div>
+              <a class="link">Read article →</a>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="news__more">
+        <a href="#" class="btn btn--ghost">Load more articles</a>
+      </div>
+    </div>
+  </div>
+</section>

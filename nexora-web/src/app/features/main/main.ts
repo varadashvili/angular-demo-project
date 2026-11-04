@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {PublisherService} from '../../shared/services/publisher-service';
+import {MainService} from './services/main-service';
 
 @Component({
   selector: 'app-main',
@@ -9,8 +10,11 @@ import {PublisherService} from '../../shared/services/publisher-service';
 })
 export class Main {
   public publisherService = inject(PublisherService);
+  public mainService = inject(MainService);
 
   constructor() {
     this.publisherService.$activePagePublisher.next('main');
+
+    this.mainService.getPartners();
   }
 }

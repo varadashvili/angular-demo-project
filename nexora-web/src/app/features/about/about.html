@@ -36,34 +36,15 @@
       </div>
 
       <div class="cards">
-        <div class="cards__item reveal">
-          <div class="cards__icon">
-            <i class="fa-solid fa-gem"></i>
+        @for(mission of aboutService.missions(); track $index){
+          <div class="cards__item reveal">
+            <div class="cards__icon">
+              <i class="{{mission.iconClass}}"></i>
+            </div>
+            <h3>{{mission.name}}</h3>
+            <p>{{mission.description}}</p>
           </div>
-          <h3>Craft</h3>
-          <p>We care about quality and polish in everything we ship, down to the last pixel.</p>
-        </div>
-        <div class="cards__item reveal">
-          <div class="cards__icon">
-            <i class="fa-solid fa-heart"></i>
-          </div>
-          <h3>People first</h3>
-          <p>Honest communication and long-term relationships with clients and teammates.</p>
-        </div>
-        <div class="cards__item reveal">
-          <div class="cards__icon">
-            <i class="fa-solid fa-bolt"></i>
-          </div>
-          <h3>Momentum</h3>
-          <p>We move fast, learn quickly and keep improving with every release.</p>
-        </div>
-        <div class="cards__item reveal">
-          <div class="cards__icon">
-            <i class="fa-solid fa-shield-halved"></i>
-          </div>
-          <h3>Integrity</h3>
-          <p>We do what we say, and we say what we mean — even when it is hard.</p>
-        </div>
+        }
       </div>
     </div>
   </section>
@@ -77,48 +58,22 @@
       </div>
 
       <div class="cards">
-        <div class="cards__item founder">
-          <div class="avatar">PG</div>
-          <h3>Polikarpe Ghobeglejiashvili</h3>
-          <p class="team-role">Co-founder & CEO</p>
-          <p>Leads strategy and partnerships. Former product lead with 12 years in tech.</p>
-          <div class="socials">
-            <a href="#" class="social">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="#" class="social" aria-label="X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
+        @for(founder of aboutService.founders(); track $index){
+          <div class="cards__item founder">
+            <div class="avatar">{{founder.initials}}</div>
+            <h3>{{founder.name}}</h3>
+            <p class="team-role">{{founder.title}}</p>
+            <p>{{founder.description}}</p>
+            <div class="socials">
+              <a href="{{founder.linkedinUrl}}" class="social">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="{{founder.twitterUrl}}" class="social" aria-label="X">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="cards__item founder">
-          <div class="avatar">KS</div>
-          <h3>Kalistrate Samchkuashvili</h3>
-          <p class="team-role">Co-founder & CTO</p>
-          <p>Heads engineering and architecture. Loves clean code and fast systems.</p>
-          <div class="socials">
-            <a href="#" class="social">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="#" class="social" aria-label="X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-          </div>
-        </div>
-        <div class="cards__item founder">
-          <div class="avatar">AS</div>
-          <h3>Agrafina Samadalashvili</h3>
-          <p class="team-role">Head of Design</p>
-          <p>Shapes the look and feel of every product with a sharp eye for detail.</p>
-          <div class="socials">
-            <a href="#" class="social">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="#" class="social" aria-label="X">
-              <i class="fa-brands fa-x-twitter"></i>
-            </a>
-          </div>
-        </div>
+        }
       </div>
     </div>
   </section>

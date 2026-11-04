@@ -1,4 +1,3 @@
-
 <main class="main-index">
 
   <section class="section-hero">
@@ -48,12 +47,9 @@
         <p class="partners__title">POWERING TEAMS AT COMPANIES LIKE </p>
 
         <div class="partners__items">
-          <span class="partners__item">Vertex</span>
-          <span class="partners__item">Lumen</span>
-          <span class="partners__item">Northwind</span>
-          <span class="partners__item">Cobalt</span>
-          <span class="partners__item">Atlas</span>
-          <span class="partners__item">Pulse</span>
+          @for (partner of mainService.partners(); track $index) {
+            <span class="partners__item">{{ partner.name }}</span>
+          }
         </div>
       </div>
     </div>

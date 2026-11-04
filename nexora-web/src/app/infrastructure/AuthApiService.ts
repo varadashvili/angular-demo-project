@@ -6,7 +6,7 @@ import {IUserInfo} from '../features/auth/interfaces/IUserInfo';
 export const baseUrl = 'http://localhost:3000';
 
 @Service()
-export class HttpClientService {
+export class AuthApiService {
   private http = inject(HttpClient);
 
   public getUsers(): Observable<IUserInfo[]> {
@@ -15,7 +15,7 @@ export class HttpClientService {
       tap({
         next:
           (users: IUserInfo[]) => {
-          console.log('Users fetched successfully:', users);
+            console.log('Users fetched successfully:', users);
           },
         error: () => {
           throw new Error('Http Request Error');
@@ -30,7 +30,7 @@ export class HttpClientService {
 
   public registerUser(userInfo: IUserInfo): Observable<IUserInfo> {
     return this.http.post<IUserInfo>(`${baseUrl}/users`, userInfo, {timeout: 2000}).pipe(
-      delay(2000),
+      delay(1000),
       catchError((error) => {
         throw new Error('Http Request Error');
       }),
