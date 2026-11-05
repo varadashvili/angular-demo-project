@@ -1,8 +1,7 @@
 import {Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import {AuthService} from '../../../features/auth/services/auth-service';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {PublisherService} from '../../services/publisher-service';
-import {Subscriber} from 'rxjs';
 import {ErrorService} from '../../services/error-service';
 import {ErrorMessage} from '../error-message/error-message';
 
@@ -15,9 +14,11 @@ import {ErrorMessage} from '../error-message/error-message';
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header implements  OnInit, OnDestroy {
+export class Header implements OnInit, OnDestroy {
   protected readonly AuthService = inject(AuthService);
   protected readonly errorServ = inject(ErrorService);
+
+  private router = inject(Router);
 
   private publisherService = inject(PublisherService);
 
@@ -36,5 +37,11 @@ export class Header implements  OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.publisherService.$activePagePublisher.unsubscribe();
+  }
+
+  public logout() {
+    this.AuthService.logout();
+
+    this.router.navigateByUrl('/');
   }
 }

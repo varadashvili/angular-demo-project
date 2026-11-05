@@ -1,7 +1,7 @@
 <header class="header">
   @if (errorServ.showErrorMsg()) {
     <div class="header__error" role="alert" animate.enter="header__error--enter" animate.leave="header__error--leave">
-      <app-error-message [errorMsg]="errorServ.msg()" />
+      <app-error-message [errorMsg]="errorServ.msg()"/>
     </div>
   }
 
@@ -16,36 +16,49 @@
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__items">
-            @if (activePage() === 'main') {
-              <a class="nav__link is-active" [routerLink]="['/']">Home</a>
-            } @else {
-              <a class="nav__link" [routerLink]="['/']">Home</a>
+            <a
+              class="nav__link"
+              [routerLink]="['/']"
+              [class.is-active]="activePage() === 'main'">
+              Home
+            </a>
+            <a
+              class="nav__link"
+              [routerLink]="['/about']"
+              [class.is-active]="activePage() === 'about'">
+              About
+            </a>
+            <a
+              class="nav__link"
+              [routerLink]="['/services']"
+              [class.is-active]="activePage() === 'services'">
+              Services
+            </a>
+            <a
+              class="nav__link"
+              [routerLink]="['/news']"
+              [class.is-active]="activePage() === 'news'">
+              News
+            </a>
+            @if (AuthService.isAuthenticated()) {
+              <a
+                class="nav__link"
+                [routerLink]="['/profile']"
+                [class.is-active]="activePage() === 'profile'">
+                Profile
+              </a>
             }
-            @if (activePage() === 'about') {
-              <a class="nav__link is-active" [routerLink]="['/about']">About</a>
-            } @else {
-              <a class="nav__link" [routerLink]="['/about']">About</a>
-            }
-            @if (activePage() === 'services') {
-              <a class="nav__link is-active" [routerLink]="['/services']">Services</a>
-            } @else {
-              <a class="nav__link" [routerLink]="['/services']">Services</a>
-            }
-            @if (activePage() === 'news') {
-              <a class="nav__link is-active" [routerLink]="['/news']">News</a>
-            } @else {
-              <a class="nav__link" [routerLink]="['/news']">News</a>
-            }
-            @if (activePage() === 'contact') {
-              <a class="nav__link is-active" [routerLink]="['/contact']">Contact</a>
-            } @else {
-              <a class="nav__link" [routerLink]="['/contact']">Contact</a>
-            }
+            <a
+              class="nav__link"
+              [routerLink]="['/contact']"
+              [class.is-active]="activePage() === 'contact'">
+              Contact
+            </a>
           </li>
         </ul>
       </nav>
       @if (AuthService.isAuthenticated()) {
-        <a class="btn btn--primary" (click)="AuthService.logout()">Logout {{ AuthService.userInfo()?.username }}</a>
+        <a class="btn btn--primary" (click)="logout()">Logout {{ AuthService.userInfo()?.username }}</a>
       } @else {
         <a class="btn btn--primary" (click)="AuthService.$showLoginPublisher.next(true)">Get Started</a>
       }
