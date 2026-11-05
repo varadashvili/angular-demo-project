@@ -1,9 +1,16 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {NewsService} from '../../services/news-service';
 import {ActivatedRoute} from '@angular/router';
+import {NewsPromo} from '../news-promo';
+import {NewsItem} from '../news-item';
 
 @Component({
-  imports: [],
+  imports: [
+    NewsPromo,
+    NewsPromo,
+    NewsPromo,
+    NewsItem
+  ],
   selector: 'app-news-items',
   styleUrl: './news-items.scss',
   templateUrl: './news-items.html',

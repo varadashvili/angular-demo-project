@@ -7,5 +7,6 @@
   author: string;
   authorInitials: string;
   timeToRead: string;
+  url: string;
   date: string;
 }
